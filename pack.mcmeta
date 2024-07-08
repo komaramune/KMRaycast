@@ -1,0 +1,6 @@
+{
+    "pack": {
+        "pack_format": 48,
+        "description": "Minecraft JEのコマンドで数式から計算を行うためのライブラリデータパック"
+    }
+}
