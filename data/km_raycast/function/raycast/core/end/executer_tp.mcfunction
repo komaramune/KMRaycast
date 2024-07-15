@@ -24,9 +24,9 @@ execute store result storage km_raycast: Raycast.Macro.TPZ double 0.001 run scor
 
 execute align xyz positioned ~0.5 ~0.5 ~0.5 run function km_raycast:raycast/core/end/tp.m with storage km_raycast: Raycast.Macro
 
-execute if score $LastCollideDirection KMRaycast matches 0 if score $UnitX KMRaycast matches 0.. positioned as @s run tp @s ~-0.0005 ~ ~
-execute if score $LastCollideDirection KMRaycast matches 0 unless score $UnitX KMRaycast matches 0.. positioned as @s run tp @s ~0.0005 ~ ~
-execute if score $LastCollideDirection KMRaycast matches 1 if score $UnitY KMRaycast matches 0.. positioned as @s run tp @s ~ ~-0.0005 ~
-execute if score $LastCollideDirection KMRaycast matches 1 unless score $UnitY KMRaycast matches 0.. positioned as @s run tp @s ~ ~0.0005 ~
-execute if score $LastCollideDirection KMRaycast matches 2 if score $UnitZ KMRaycast matches 0.. positioned as @s run tp @s ~ ~ ~-0.0005
-execute if score $LastCollideDirection KMRaycast matches 2 unless score $UnitZ KMRaycast matches 0.. positioned as @s run tp @s ~ ~ ~0.0005
+execute if score $LastCollideAxis KMRaycast matches 0 if score $UnitX KMRaycast matches 0.. positioned as @s run tp @s ~-0.0005 ~ ~
+execute if score $LastCollideAxis KMRaycast matches 0 unless score $UnitX KMRaycast matches 0.. positioned as @s run tp @s ~0.0005 ~ ~
+execute if score $LastCollideAxis KMRaycast matches 1 if score $UnitY KMRaycast matches 0.. positioned as @s run tp @s ~ ~-0.0005 ~
+execute if score $LastCollideAxis KMRaycast matches 1 unless score $UnitY KMRaycast matches 0.. positioned as @s run tp @s ~ ~0.0005 ~
+execute if score $LastCollideAxis KMRaycast matches 2 if score $UnitZ KMRaycast matches 0.. positioned as @s run tp @s ~ ~ ~-0.0005
+execute if score $LastCollideAxis KMRaycast matches 2 unless score $UnitZ KMRaycast matches 0.. positioned as @s run tp @s ~ ~ ~0.0005

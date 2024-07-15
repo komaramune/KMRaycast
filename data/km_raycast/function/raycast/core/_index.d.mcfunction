@@ -17,7 +17,7 @@
     #declare score_holder $NowLengthX
     #declare score_holder $NowLengthY
     #declare score_holder $NowLengthZ
-    #declare score_holder $LastCollideDirection
+    #declare score_holder $LastCollideAxis
     #declare score_holder $DeltaX
     #declare score_holder $DeltaY
     #declare score_holder $DeltaZ
