@@ -10,7 +10,7 @@ Minecraft Java Edition 1.21~
 # 使用例
 ```
 # 引数設定
-data modify storage km_raycast: Raycast.Arguments set value {MaxLength:10000, Conditions:"unless block ~ ~ ~ air"}
+data modify storage km_raycast: Raycast.Arguments set value {MaxLength:100d, Conditions:"unless block ~ ~ ~ air"}
 
 # 関数実行
 function km_raycast:raycast/

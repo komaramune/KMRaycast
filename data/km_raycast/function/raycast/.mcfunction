@@ -3,11 +3,11 @@
 # レイキャスト処理
 # @input
 #   as entity
-#   storage km_raycast: Raycast.Arguments.MaxLength: 前進の最大距離(m)
+#   storage km_raycast: Raycast.Arguments.MaxLength: 最大進行距離(m)
 #   storage km_raycast: Raycast.Arguments.Conditions: "unless block"などのサブコマンドの文字列で表される透過しないブロックの条件
 # @output
 #   storage km_raycast: Raycast.Returns.ResultLength: 前進した距離(m)
-#   storage km_raycast: Raycast.Returns.RemainingLength: 衝突した場合に残った距離(m)
+#   storage km_raycast: Raycast.Returns.RemainingLength: 衝突した時点で残った進行距離(m)
 #   storage km_raycast: Raycast.Returns.LastCollideAxis: 衝突した方向(-1:衝突なし, 0:X軸, 1:Y軸, 2:Z軸)
 # @api
 
@@ -16,7 +16,7 @@ execute store success score $CheckConditions KMRaycast run function km_raycast:r
 execute unless score $CheckConditions KMRaycast matches 1 run return run say 【エラー】レイキャスト関数の引数に渡された値が不正です。
 
 # 引数コピー
-execute store result score $MaxLength KMRaycast run data get storage km_raycast: Raycast.Arguments.MaxLength
+execute store result score $MaxLength KMRaycast run data get storage km_raycast: Raycast.Arguments.MaxLength 1000
 data modify storage km_raycast: Raycast.Macro.Conditions set from storage km_raycast: Raycast.Arguments.Conditions
 
 # 定数値定義
