@@ -27,5 +27,6 @@
     #declare score_holder $RayLength
     #declare score_holder $MaxLength
     #declare score_holder $ResultLength
+    #declare score_holder $RemainingReflectCount
 # @api
     #declare storage km_raycast:
