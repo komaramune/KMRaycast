@@ -1,0 +1,1 @@
+execute positioned ^-0.05 ^0.05 ^ summon minecraft:block_display run function km_raycast:test/laser
