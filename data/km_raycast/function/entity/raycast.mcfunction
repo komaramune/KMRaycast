@@ -1,16 +1,16 @@
 #> km_raycast:entity/raycast
 #
-# 線状当たり判定検知
+# エンティティレイキャスト判定検知
 # @input
 #   at position rotation 線の始点と向き
 #   storage km_raycast: EntityRaycast.Arguments.MaxLength: 最大進行距離(m)
 #   storage km_raycast: EntityRaycast.Arguments.SelectorArguments: エンティティを絞り込むセレクタ引数(例:",type=armor_stand,tag=hoge"。最初に","が必要)
 #   storage km_raycast: EntityRaycast.Arguments.CallbackFunction: 検知したエンティティに対して実行するファンクション(空文字列で実行無し)
-#   storage km_raycast: EntityRaycast.Arguments.ThroughMode:true: 線がエンティティを貫通するかどうか。非貫通モードでは最も手前のエンティティが対象になる(一体だけとは限らない)
+#   storage km_raycast: EntityRaycast.Arguments.ThroughMode: 線がエンティティを貫通するかどうか。非貫通モードでは最も手前のエンティティが対象になる(一体だけとは限らない)
 # @output
 #   storage km_raycast: EntityRaycast.Returns.ResultLength: 前進した距離(m)
 #   storage km_raycast: EntityRaycast.Returns.RemainingLength: 残っている進行距離(m)
-#   storage km_raycast: EntityRaycast.Returns.HitNum: ヒットした回数
+#   storage km_raycast: EntityRaycast.Returns.HitCount: ヒットした回数
 # @api
 
 # 実行位置が読み込まれていなかったら失敗
@@ -31,7 +31,9 @@ data modify storage km_raycast: EntityRaycast.Macro.RunLength set value 0d
 # 戻り値セット
 data remove storage km_raycast: EntityRaycast.Returns
 data modify storage km_raycast: EntityRaycast.Returns set value {ResultLength:0d,RemainingLength:0d,HitCount:0}
-execute store result storage km_raycast: EntityRaycast.Returns.RemainingLength double 0.00390625 run data get storage km_raycast: EntityRaycast.Arguments.MaxLength 256
+execute store result storage km_raycast: EntityRaycast.Returns.ResultLength double 0.00390625 run data get storage km_raycast: EntityRaycast.Arguments.MaxLength 256
+# execute store result storage km_raycast: EntityRaycast.Returns.RemainingLength double 0.00390625 run data get storage km_raycast: EntityRaycast.Arguments.MaxLength 256
+execute store result storage km_raycast: EntityRaycast.Returns.HitCount int 1 run scoreboard players get $HitCount KMRaycast
 
 # execute幾何学で一時エンティティを角度align
 execute as 8c6c3500-0ec4-4556-b818-24046a8a1352 positioned 0.0 0.0 0.0 positioned ^ ^ ^-0.5 align xyz facing -0.5 -0.5 -0.5 positioned as @s run tp @s ~ ~ ~ ~ ~

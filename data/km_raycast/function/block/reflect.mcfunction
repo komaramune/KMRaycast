@@ -1,6 +1,6 @@
 #> km_raycast:block/reflect
 #
-# レイキャスト処理
+# ブロック反射処理
 # @input
 #   as entity
 #   storage km_raycast: BlockRaycast.Arguments.MaxLength: 最大進行距離(m)
@@ -18,13 +18,15 @@
 #   as entity: 着弾・反射後の位置・向き
 # @api
 
+# 引数チェック
+data remove storage km_raycast: BlockRaycast.SuccessFlag
+execute store success storage km_raycast: BlockRaycast.SuccessFlag byte 1 run function km_raycast:zz/block/reflect/check_arguments.m with storage km_raycast: BlockReflect.Arguments
+execute unless data storage km_raycast: {BlockRaycast:{SuccessFlag:1b}} run say 【エラー】リフレクト関数の引数に渡された値が不正です。
+execute unless data storage km_raycast: {BlockRaycast:{SuccessFlag:1b}} run return run data remove storage km_raycast: BlockRaycast.SuccessFlag
+data remove storage km_raycast: BlockRaycast.SuccessFlag
+
 # オブジェクティブ成作
 scoreboard objectives add KMRaycast dummy
-
-# 引数チェック
-execute store success score $CheckConditions KMRaycast run function km_raycast:zz/block/reflect/check_arguments.m with storage km_raycast: BlockReflect.Arguments
-execute unless score $CheckConditions KMRaycast matches 1 run say 【エラー】リフレクト関数の引数に渡された値が不正です。
-execute unless score $CheckConditions KMRaycast matches 1 run return run scoreboard objectives remove KMRaycast
 
 # 引数コピー
 execute store result score $MaxLength KMRaycast run data get storage km_raycast: BlockReflect.Arguments.MaxLength 1000

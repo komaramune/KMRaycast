@@ -1,6 +1,6 @@
 #> km_raycast:block/raycast
 #
-# レイキャスト処理
+# ブロックレイキャスト処理
 # @input
 #   as entity
 #   storage km_raycast: BlockRaycast.Arguments.MaxLength: 最大進行距離(m)
@@ -11,13 +11,14 @@
 #   storage km_raycast: BlockRaycast.Returns.LastCollideAxis: 衝突した方向(-1:衝突なし, 0:X軸, 1:Y軸, 2:Z軸)
 # @api
 
+# 引数チェック
+execute store success storage km_raycast: BlockRaycast.SuccessFlag byte 1 run function km_raycast:zz/block/raycast/check_arguments.m with storage km_raycast: BlockRaycast.Arguments
+execute unless data storage km_raycast: {BlockRaycast:{SuccessFlag:1b}} run say 【エラー】レイキャスト関数の引数に渡された値が不正です。
+execute unless data storage km_raycast: {BlockRaycast:{SuccessFlag:1b}} run return run data remove storage km_raycast: BlockRaycast.SuccessFlag
+data remove storage km_raycast: BlockRaycast.SuccessFlag
+
 # オブジェクティブ成作
 scoreboard objectives add KMRaycast dummy
-
-# 引数チェック
-execute store success score $CheckConditions KMRaycast run function km_raycast:zz/block/raycast/check_arguments.m with storage km_raycast: BlockRaycast.Arguments
-execute unless score $CheckConditions KMRaycast matches 1 run say 【エラー】レイキャスト関数の引数に渡された値が不正です。
-execute unless score $CheckConditions KMRaycast matches 1 run return run scoreboard objectives remove KMRaycast
 
 # 引数コピー
 execute store result score $MaxLength KMRaycast run data get storage km_raycast: BlockRaycast.Arguments.MaxLength 1000
