@@ -3,27 +3,27 @@
 # ブロック反射処理
 # @input
 #   as entity
-#   storage km_raycast: BlockRaycast.Arguments.MaxLength: 最大進行距離(m)
-#   storage km_raycast: BlockRaycast.Arguments.Conditions: unless blockなどのサブコマンドの文字列で表される透過しないブロックの条件
-#   storage km_raycast: BlockRaycast.Arguments.MaxReflectCount: 最大反射可能回数
-#   storage km_raycast: BlockRaycast.Arguments.CallbackFunction: 反射位置で実行するファンクション(空文字列で実行無し)
+#   storage km_raycast: BlockReflect.Arguments.MaxLength: 最大進行距離(m)
+#   storage km_raycast: BlockReflect.Arguments.Conditions: unless blockなどのサブコマンドの文字列で表される透過しないブロックの条件
+#   storage km_raycast: BlockReflect.Arguments.MaxReflectCount: 最大反射可能回数
+#   storage km_raycast: BlockReflect.Arguments.CallbackFunction: 反射位置で実行するファンクション(空文字列で実行無し)
 # @output
-#   storage km_raycast: BlockRaycast.Returns.ResultLength: 前進した合計距離(m)
-#   storage km_raycast: BlockRaycast.Returns.LastLength: 最後に前進した距離(m)
-#   storage km_raycast: BlockRaycast.Returns.RemainingLength: 終了した時点で残った進行距離(m)
-#   storage km_raycast: BlockRaycast.Returns.LastCollideAxis: 最後に衝突した方向(-1:衝突なし, 0:x, 1:y, 2:z)
-#   storage km_raycast: BlockRaycast.Returns.RemainingRelfrctCount: 残りの反射可能回数
+#   storage km_raycast: BlockReflect.Returns.ResultLength: 前進した合計距離(m)
+#   storage km_raycast: BlockReflect.Returns.LastLength: 最後に前進した距離(m)
+#   storage km_raycast: BlockReflect.Returns.RemainingLength: 終了した時点で残った進行距離(m)
+#   storage km_raycast: BlockReflect.Returns.LastCollideAxis: 最後に衝突した方向(-1:衝突なし, 0:x, 1:y, 2:z)
+#   storage km_raycast: BlockReflect.Returns.RemainingRelfrctCount: 残りの反射可能回数
 #   (コールバック実行時の追加情報)
 #   実行位置・向き: 発射時点での位置・向き
 #   as entity: 着弾・反射後の位置・向き
 # @api
 
 # 引数チェック
-data remove storage km_raycast: BlockRaycast.SuccessFlag
-execute store success storage km_raycast: BlockRaycast.SuccessFlag byte 1 run function km_raycast:zz/block/reflect/check_arguments.m with storage km_raycast: BlockReflect.Arguments
-execute unless data storage km_raycast: {BlockRaycast:{SuccessFlag:1b}} run say 【エラー】リフレクト関数の引数に渡された値が不正です。
-execute unless data storage km_raycast: {BlockRaycast:{SuccessFlag:1b}} run return run data remove storage km_raycast: BlockRaycast.SuccessFlag
-data remove storage km_raycast: BlockRaycast.SuccessFlag
+data remove storage km_raycast: BlockReflect.SuccessFlag
+execute store success storage km_raycast: BlockReflect.SuccessFlag byte 1 run function km_raycast:zz/block/reflect/check_arguments.m with storage km_raycast: BlockReflect.Arguments
+execute unless data storage km_raycast: {BlockReflect:{SuccessFlag:1b}} run say 【エラー】リフレクト関数の引数に渡された値が不正です。
+execute unless data storage km_raycast: {BlockReflect:{SuccessFlag:1b}} run return run data remove storage km_raycast: BlockReflect.SuccessFlag
+data remove storage km_raycast: BlockReflect.SuccessFlag
 
 # オブジェクティブ成作
 scoreboard objectives add KMRaycast dummy
