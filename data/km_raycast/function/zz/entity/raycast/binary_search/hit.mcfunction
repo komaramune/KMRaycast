@@ -1,6 +1,6 @@
 # 二分探査終了処理
-scoreboard players operation @s KMRaycast = $BSLength KMRaycast
-scoreboard players operation $MinLength KMRaycast < $BSLength KMRaycast
+scoreboard players operation @s KMEntityRaycast = $BSLength KMEntityRaycast
+scoreboard players operation $MinLength KMEntityRaycast < $BSLength KMEntityRaycast
 
 execute if data storage km_raycast: {EntityRaycast:{Arguments:{ThroughMode:false}}} run return 1
 

@@ -26,36 +26,36 @@ execute unless data storage km_raycast: {BlockReflect:{SuccessFlag:1b}} run retu
 data remove storage km_raycast: BlockReflect.SuccessFlag
 
 # オブジェクティブ成作
-scoreboard objectives add KMRaycast dummy
+scoreboard objectives add KMBlockRaycast dummy
 
 # 引数コピー
-execute store result score $MaxLength KMRaycast run data get storage km_raycast: BlockReflect.Arguments.MaxLength 1000
+execute store result score $MaxLength KMBlockRaycast run data get storage km_raycast: BlockReflect.Arguments.MaxLength 1000
 data modify storage km_raycast: BlockRaycast.Macro.Conditions set from storage km_raycast: BlockReflect.Arguments.Conditions
-execute store result score $RemainingReflectCount KMRaycast run data get storage km_raycast: BlockReflect.Arguments.MaxReflectCount
+execute store result score $RemainingReflectCount KMBlockRaycast run data get storage km_raycast: BlockReflect.Arguments.MaxReflectCount
 
 # 定数値定義
-scoreboard players set $1000 KMRaycast 1000
-scoreboard players set $-1 KMRaycast -1
+scoreboard players set $1000 KMBlockRaycast 1000
+scoreboard players set $-1 KMBlockRaycast -1
 
 # 数値取得
 execute summon marker run function km_raycast:zz/block/raycast/get_decimal/
 
 # レイキャスト処理
 tp @s ~ ~ ~ ~ ~
-scoreboard players operation $RemainingLength KMRaycast = $MaxLength KMRaycast
+scoreboard players operation $RemainingLength KMBlockRaycast = $MaxLength KMBlockRaycast
 function km_raycast:zz/block/reflect/rec
 
 # 戻り値
-scoreboard players add $RemainingReflectCount KMRaycast 1
-scoreboard players operation $ResultLength KMRaycast = $MaxLength KMRaycast
-scoreboard players operation $ResultLength KMRaycast -= $RemainingLength KMRaycast
+scoreboard players add $RemainingReflectCount KMBlockRaycast 1
+scoreboard players operation $ResultLength KMBlockRaycast = $MaxLength KMBlockRaycast
+scoreboard players operation $ResultLength KMBlockRaycast -= $RemainingLength KMBlockRaycast
 data remove storage km_raycast: BlockReflect.Returns
-execute store result storage km_raycast: BlockReflect.Returns.ResultLength double 0.001 run scoreboard players get $ResultLength KMRaycast
-execute store result storage km_raycast: BlockReflect.Returns.LastLength double 0.001 run scoreboard players get $RayLength KMRaycast
-execute store result storage km_raycast: BlockReflect.Returns.RemainingLength double 0.001 run scoreboard players get $RemainingLength KMRaycast
-execute store result storage km_raycast: BlockReflect.Returns.LastCollideAxis int 1 run scoreboard players get $LastCollideAxis KMRaycast
-execute store result storage km_raycast: BlockReflect.Returns.RemainingRelfrctCount int 1 run scoreboard players get $RemainingReflectCount KMRaycast
+execute store result storage km_raycast: BlockReflect.Returns.ResultLength double 0.001 run scoreboard players get $ResultLength KMBlockRaycast
+execute store result storage km_raycast: BlockReflect.Returns.LastLength double 0.001 run scoreboard players get $RayLength KMBlockRaycast
+execute store result storage km_raycast: BlockReflect.Returns.RemainingLength double 0.001 run scoreboard players get $RemainingLength KMBlockRaycast
+execute store result storage km_raycast: BlockReflect.Returns.LastCollideAxis int 1 run scoreboard players get $LastCollideAxis KMBlockRaycast
+execute store result storage km_raycast: BlockReflect.Returns.RemainingRelfrctCount int 1 run scoreboard players get $RemainingReflectCount KMBlockRaycast
 
 # 後処理
-scoreboard objectives remove KMRaycast
+scoreboard objectives remove KMBlockRaycast
 data remove storage km_raycast: BlockRaycast.Macro

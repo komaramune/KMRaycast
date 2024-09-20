@@ -4,7 +4,7 @@
 #> raycast
 # @within function
 #   km_raycast:**
-    #declare objective KMRaycast
+    #declare objective KMBlockRaycast
     #declare score_holder $-1
     #declare score_holder $1000
     #declare score_holder $UnitX

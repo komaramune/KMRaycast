@@ -20,10 +20,10 @@ execute unless loaded ~ ~ ~ run return fail
 summon marker ~ ~ ~ {UUID:[I; -1939065600, 247743830, -1206377468, 1787433810]}
 
 # オブジェクティブ成作
-scoreboard objectives add KMRaycast dummy
+scoreboard objectives add KMEntityRaycast dummy
 
 # 引数コピー
-execute store result score $MaxLength KMRaycast run data get storage km_raycast: EntityRaycast.Arguments.MaxLength 256
+execute store result score $MaxLength KMEntityRaycast run data get storage km_raycast: EntityRaycast.Arguments.MaxLength 256
 data modify storage km_raycast: EntityRaycast.Macro.SelectorArguments set from storage km_raycast: EntityRaycast.Arguments.SelectorArguments
 data modify storage km_raycast: EntityRaycast.Macro.CallbackFunction set from storage km_raycast: EntityRaycast.Arguments.CallbackFunction
 data modify storage km_raycast: EntityRaycast.Macro.RunLength set value 0d
@@ -33,14 +33,14 @@ data remove storage km_raycast: EntityRaycast.Returns
 data modify storage km_raycast: EntityRaycast.Returns set value {ResultLength:0d,RemainingLength:0d,HitCount:0}
 execute store result storage km_raycast: EntityRaycast.Returns.ResultLength double 0.00390625 run data get storage km_raycast: EntityRaycast.Arguments.MaxLength 256
 # execute store result storage km_raycast: EntityRaycast.Returns.RemainingLength double 0.00390625 run data get storage km_raycast: EntityRaycast.Arguments.MaxLength 256
-execute store result storage km_raycast: EntityRaycast.Returns.HitCount int 1 run scoreboard players get $HitCount KMRaycast
+execute store result storage km_raycast: EntityRaycast.Returns.HitCount int 1 run scoreboard players get $HitCount KMEntityRaycast
 
 # execute幾何学で一時エンティティを角度align
 execute as 8c6c3500-0ec4-4556-b818-24046a8a1352 positioned 0.0 0.0 0.0 positioned ^ ^ ^-0.5 align xyz facing -0.5 -0.5 -0.5 positioned as @s run tp @s ~ ~ ~ ~ ~
 
-scoreboard players set $SearchLength KMRaycast 0
-scoreboard players set $MinLength KMRaycast 2000000000
-scoreboard players set $HitCount KMRaycast 0
+scoreboard players set $SearchLength KMEntityRaycast 0
+scoreboard players set $MinLength KMEntityRaycast 2000000000
+scoreboard players set $HitCount KMEntityRaycast 0
 function km_raycast:zz/entity/raycast/rec
 
 # 一時エンティティ削除
@@ -50,4 +50,4 @@ kill 8c6c3500-0ec4-4556-b818-24046a8a1352
 data remove storage km_raycast: EntityRaycast.Macro
 
 # オブジェクティブ削除
-scoreboard objectives remove KMRaycast
+scoreboard objectives remove KMEntityRaycast

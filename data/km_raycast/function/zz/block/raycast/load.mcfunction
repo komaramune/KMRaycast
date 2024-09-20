@@ -1,4 +1,4 @@
 #> km_raycast:zz/load
 # @private
 
-scoreboard objectives add KMRaycast dummy
+scoreboard objectives add KMBlockRaycast dummy

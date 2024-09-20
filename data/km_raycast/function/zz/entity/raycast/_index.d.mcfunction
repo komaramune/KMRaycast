@@ -4,6 +4,6 @@
 #> raycast
 # @within function
 #   km_raycast:**
-    #declare objective KMRaycast
+    #declare objective KMEntityRaycast
 # @api
     #declare storage km_raycast:
