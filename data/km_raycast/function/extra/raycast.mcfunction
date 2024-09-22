@@ -17,11 +17,18 @@
 #   storage km_raycast: ExtraRaycast.Returns.LastCollideAxis: ブロックに衝突した方向(-1:衝突なし, 0:X軸, 1:Y軸, 2:Z軸)
 # @api
 
+# 実行位置が読み込まれていなかったら失敗
+execute unless loaded ~ ~ ~ run return fail
+
 # 引数チェック
 data remove storage km_raycast: ExtraRaycast.SuccessFlag
 execute store success storage km_raycast: ExtraRaycast.SuccessFlag byte 1 run function km_raycast:zz/extra/raycast/check_arguments.m with storage km_raycast: ExtraRaycast.Arguments
 execute unless data storage km_raycast: {ExtraRaycast:{SuccessFlag:True}} run say 【エラー】レイキャスト関数の引数に渡された値が不正です。
 execute unless data storage km_raycast: {ExtraRaycast:{SuccessFlag:True}} run return run data remove storage km_raycast: ExtraRaycast.SuccessFlag
+
+# 引数コピー
+data modify storage km_raycast: ExtraRaycast.Macro.BlockCallbackFunction set from storage km_raycast: ExtraRaycast.Arguments.BlockCallbackFunction
+data modify storage km_raycast: ExtraRaycast.Macro.EntityCallbackFunction set from storage km_raycast: ExtraRaycast.Arguments.EntityCallbackFunction
 
 # ブロックレイキャスト＆エンティティレイキャストの引数＆戻り値退避
 data remove storage km_raycast: ExtraRaycast.Stash

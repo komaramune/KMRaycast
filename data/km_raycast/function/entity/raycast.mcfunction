@@ -32,8 +32,6 @@ data modify storage km_raycast: EntityRaycast.Macro.RunLength set value 0d
 data remove storage km_raycast: EntityRaycast.Returns
 data modify storage km_raycast: EntityRaycast.Returns set value {ResultLength:0d,RemainingLength:0d,HitCount:0}
 execute store result storage km_raycast: EntityRaycast.Returns.ResultLength double 0.00390625 run data get storage km_raycast: EntityRaycast.Arguments.MaxLength 256
-# execute store result storage km_raycast: EntityRaycast.Returns.RemainingLength double 0.00390625 run data get storage km_raycast: EntityRaycast.Arguments.MaxLength 256
-execute store result storage km_raycast: EntityRaycast.Returns.HitCount int 1 run scoreboard players get $HitCount KMEntityRaycast
 
 # execute幾何学で一時エンティティを角度align
 execute as 8c6c3500-0ec4-4556-b818-24046a8a1352 positioned 0.0 0.0 0.0 positioned ^ ^ ^-0.5 align xyz facing -0.5 -0.5 -0.5 positioned as @s run tp @s ~ ~ ~ ~ ~

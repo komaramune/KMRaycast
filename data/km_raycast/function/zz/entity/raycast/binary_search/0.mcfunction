@@ -1,4 +1,3 @@
-# particle crit ~ ~ ~ 0 0 0 0 0 force
 # ヒット済みのエンティティを除外
 execute if score @s KMEntityRaycast matches 0.. run return fail
 

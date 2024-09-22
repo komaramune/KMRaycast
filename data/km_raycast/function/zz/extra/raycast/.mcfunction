@@ -1,4 +1,4 @@
-#> km_raycast:zz/extra/raycast/block_raycast
+#> km_raycast:zz/extra/raycast/
 # @within function km_raycast:**
 
 # ブロックレイキャスト処理
@@ -18,6 +18,7 @@ data remove storage km_raycast: ExtraRaycast.Returns
 data modify storage km_raycast: ExtraRaycast.Returns.ResultLength set from storage km_raycast: EntityRaycast.Returns.ResultLength
 data modify storage km_raycast: ExtraRaycast.Returns.RemainingLength set from storage km_raycast: EntityRaycast.Returns.RemainingLength
 data modify storage km_raycast: ExtraRaycast.Returns.HitCount set from storage km_raycast: EntityRaycast.Returns.HitCount
+data modify storage km_raycast: ExtraRaycast.Returns.LastCollideAxis set from storage km_raycast: BlockRaycast.Returns.LastCollideAxis
 
 # ブロックコールバック実行
 execute unless data storage km_raycast: {ExtraRaycast:{Arguments:{BlockCallbackFunction:""}}} at @s run function km_raycast:zz/extra/raycast/callback/block

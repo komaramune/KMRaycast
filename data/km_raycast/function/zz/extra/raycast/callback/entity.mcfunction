@@ -10,5 +10,4 @@ data modify storage km_raycast: ExtraRaycast.Returns.ResultLength set from stora
 data modify storage km_raycast: ExtraRaycast.Returns.HitCount set from storage km_raycast: EntityRaycast.Returns.HitCount
 data modify storage km_raycast: ExtraRaycast.Returns.LastCollideAxis set value -1
 
-data modify storage km_raycast: ExtraRaycast.Macro.EntityCallbackFunction set from storage km_raycast: ExtraRaycast.Arguments.EntityCallbackFunction
 function km_raycast:zz/extra/raycast/callback/entity_macro.m with storage km_raycast: ExtraRaycast.Macro

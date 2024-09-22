@@ -9,5 +9,4 @@ data modify storage km_raycast: ExtraRaycast.Returns.RemainingLength set from st
 data modify storage km_raycast: ExtraRaycast.Returns.ResultLength set from storage km_raycast: BlockRaycast.Returns.ResultLength
 
 # コールバック実行
-data modify storage km_raycast: ExtraRaycast.Macro.BlockCallbackFunction set from storage km_raycast: ExtraRaycast.Arguments.BlockCallbackFunction
 function km_raycast:zz/extra/raycast/callback/block_macro.m with storage km_raycast: ExtraRaycast.Macro
