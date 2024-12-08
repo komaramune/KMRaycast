@@ -4,7 +4,7 @@
 # @input
 #   at position rotation 線の始点と向き
 #   storage km_raycast: EntityRaycast.Arguments.MaxLength: 最大進行距離(m)
-#   storage km_raycast: EntityRaycast.Arguments.SelectorArguments: エンティティを絞り込むセレクタ引数(例:",type=armor_stand,tag=hoge"。最初に","が必要)
+#   storage km_raycast: EntityRaycast.Arguments.SelectorArguments: エンティティを絞り込むセレクタ引数(例:"type=armor_stand,tag=hoge")
 #   storage km_raycast: EntityRaycast.Arguments.CallbackFunction: 検知したエンティティに対して実行するファンクション(空文字列で実行無し)
 #   storage km_raycast: EntityRaycast.Arguments.ThroughMode: 線がエンティティを貫通するかどうか。非貫通モードでは最も手前のエンティティが対象になる(一体だけとは限らない)
 # @output
